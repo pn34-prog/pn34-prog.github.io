@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Premchand Nagireddy</title>
+<meta name="description" content="Premchand Nagireddy: MS Finance (FinTech & Quant) at Fordham Gabelli, former Equity Data Research Analyst at Morningstar. Portfolio of experience, projects and skills.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: a research-report page. Left rail of section labels, right column of content; a term-sheet style stat strip under the header. */
+:root {
+  --ink: #16202b;
+  --muted: #56616d;
+  --paper: #f6f7f8;
+  --card: #ffffff;
+  --rule: #d9dde2;
+  --accent: #1d4e89;
+  --accent-soft: #e6eef7;
+  --font-display: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ink: #e7eaee; --muted: #a2abb5; --paper: #10151b; --card: #171e26;
+    --rule: #2a333d; --accent: #7fb0e8; --accent-soft: #17283b; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --ink: #e7eaee; --muted: #a2abb5; --paper: #10151b; --card: #171e26;
+  --rule: #2a333d; --accent: #7fb0e8; --accent-soft: #17283b; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--paper); color: var(--ink); font: 400 16px/1.6 var(--font-body); -webkit-font-smoothing: antialiased; }
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+header.top { border-bottom: 1px solid var(--rule); background: var(--card); }
+.top-inner { padding-top: 48px; padding-bottom: 32px; display: grid; gap: 20px; }
+.eyebrow { font: 500 12px/1 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+h1 { font: 600 clamp(36px, 6vw, 56px)/1.05 var(--font-display); margin: 0; letter-spacing: -.01em; text-wrap: balance; }
+.lede { font-size: 18px; color: var(--muted); max-width: 64ch; margin: 0; }
+.links { display: flex; flex-wrap: wrap; gap: 10px 18px; font-size: 15px; }
+.links a { font-weight: 500; }
+.open { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: var(--ink); background: var(--accent-soft); border-radius: 999px; padding: 6px 14px; width: fit-content; }
+.open::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #2f8f5b; }
+
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--rule); }
+.stat { padding: 18px 16px 20px 0; }
+.stat + .stat { border-left: 1px solid var(--rule); padding-left: 16px; }
+.stat b { display: block; font: 600 28px/1.1 var(--font-display); font-variant-numeric: tabular-nums; }
+.stat span { font-size: 13px; color: var(--muted); }
+
+nav.toc { position: sticky; top: 0; z-index: 2; background: color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--rule); }
+nav.toc ul { list-style: none; margin: 0 auto; padding-top: 10px; padding-bottom: 10px; display: flex; gap: 6px 20px; flex-wrap: wrap; font-size: 14px; }
+nav.toc a { color: var(--muted); text-decoration: none; }
+nav.toc a:hover { color: var(--accent); }
+
+section { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 32px; padding: 48px 0; border-bottom: 1px solid var(--rule); }
+section > h2 { font: 500 12px/1.4 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 6px 0 0; }
+.body { display: flex; flex-direction: column; gap: 28px; min-width: 0; }
+.body p { margin: 0; max-width: 68ch; }
+
+.entry { display: grid; gap: 6px; }
+.entry-head { display: flex; justify-content: space-between; align-items: baseline; gap: 6px 16px; flex-wrap: wrap; }
+.entry h3 { font: 600 22px/1.25 var(--font-display); margin: 0; text-wrap: balance; }
+.org { font-weight: 500; }
+.meta { font: 400 13px/1.4 var(--font-mono); color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.entry ul { margin: 6px 0 0; padding-left: 18px; max-width: 72ch; }
+.entry li { margin: 4px 0; }
+.entry li::marker { color: var(--accent); }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.tag { font: 400 12px/1 var(--font-mono); padding: 5px 8px; border: 1px solid var(--rule); border-radius: 4px; color: var(--muted); background: var(--card); }
+.badge { font: 500 11px/1 var(--font-mono); letter-spacing: .04em; text-transform: uppercase; padding: 4px 7px; border-radius: 4px; background: var(--accent-soft); color: var(--accent); }
+
+.grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.card { background: var(--card); border: 1px solid var(--rule); border-radius: 8px; padding: 18px 20px; }
+.card h3 { font: 600 18px/1.3 var(--font-display); margin: 0 0 4px; }
+.card p { font-size: 15px; color: var(--muted); }
+
+.body.skills, .skills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 32px; }
+.skills h3 { font: 600 15px/1.3 var(--font-body); margin: 0 0 8px; }
+.list-plain { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+.list-plain li { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; border-bottom: 1px dashed var(--rule); padding-bottom: 10px; }
+
+footer { padding: 40px 0 56px; color: var(--muted); font-size: 14px; }
+
+@media (max-width: 760px) {
+  section { grid-template-columns: 1fr; gap: 12px; padding: 36px 0; }
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stat:nth-child(3) { border-left: 0; padding-left: 0; }
+  .stat:nth-child(n+3) { border-top: 1px solid var(--rule); }
+  .grid2, .body.skills { grid-template-columns: 1fr; }
+  .meta { white-space: normal; }
+}
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+html { scroll-behavior: smooth; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top-inner">
+    <div class="eyebrow">Finance · FinTech &amp; Quant · New York</div>
+    <h1>Premchand Nagireddy</h1>
+    <p class="lede">MS Finance (FinTech &amp; Quant) candidate at Fordham's Gabelli School of Business and former Equity Data Research Analyst at Morningstar. I combine financial analysis with an engineer's habit of automating anything done by hand.</p>
+    <div class="open">Open to analyst roles: investment research, private equity, hedge funds, wealth management, risk and corporate finance</div>
+    <div class="links">
+      <a href="mailto:pn34@fordham.edu">pn34@fordham.edu</a>
+      <a href="https://www.linkedin.com/in/premchandnagireddy">linkedin.com/in/premchandnagireddy</a>
+      <span class="meta">New York, NY · New York, across the US, and London</span>
+    </div>
+    <div class="stats" aria-label="Selected results">
+      <div class="stat"><b>70%</b><span>less manual data collection, Python automation at Morningstar</span></div>
+      <div class="stat"><b>95%</b><span>success rate on Thailand market file merging and conversion</span></div>
+      <div class="stat"><b>Grade A</b><span>ERC portfolio project, best presentation by 2 of 3 judges</span></div>
+      <div class="stat"><b>735</b><span>GMAT Focus (out of 805); Dean's List at Fordham</span></div>
+    </div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Sections">
+  <ul class="wrap">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#ai">AI &amp; automation</a></li>
+    <li><a href="#writing">Writing</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#leadership">Leadership</a></li>
+  </ul>
+</nav>
+
+<main class="wrap">
+
+<section id="about">
+  <h2>About</h2>
+  <div class="body">
+    <p>I spent three years at Morningstar on the Global Equity Finance team, reconciling company financial data and building the Python tools that made that work faster and more reliable. I'm now completing an MS in Finance with a FinTech and Quant concentration at Fordham, where my work spans portfolio construction, algorithmic trading and transaction cost analysis, and a capstone for a risk advisory firm. I also use generative AI in my work: an agentic equity-research pipeline, an AI forecasting bot for ETFs and an automated job-search workflow.</p>
+    <p>Before finance, I trained as an electronics engineer, co-founded a home-automation company and managed high-net-worth client relationships at Federal Bank. That mix taught me to build the model and also to explain it to the person who has to act on it.</p>
+    <p>I'm looking for analyst roles in investment research, private equity, hedge funds, wealth management, risk and corporate finance. I'm preparing for FRM Part I and building fluency on the Bloomberg Terminal.</p>
+  </div>
+</section>
+
+<section id="experience">
+  <h2>Experience</h2>
+  <div class="body">
+    <article class="entry">
+      <div class="entry-head"><h3>Equity Data Research Analyst</h3><span class="meta">Jul 2022 – Jul 2025</span></div>
+      <div><span class="org">Morningstar Inc.</span> · Global Equity Finance · Navi Mumbai, India</div>
+      <ul>
+        <li><strong>Cross-functional work for PitchBook (a Morningstar company):</strong> researched, validated and interpreted private-company data for the PitchBook private capital markets platform.</li>
+        <li>Built Python web-scraping and automated data-retrieval tools (BeautifulSoup, win32com) that cut manual data collection time by 70% and gave the team faster market data.</li>
+        <li>Designed the Thailand market code end to end, reaching a 95% success rate in file merging and conversion; recognized with a Morningstar Shout Out Award (2023) for productivity and code design.</li>
+        <li>Reconciled company financial data by extracting key data points, reducing discrepancies by 20% and improving reporting efficiency.</li>
+      </ul>
+      <div class="tags"><span class="tag">PitchBook</span><span class="tag">Private markets data</span><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Financial reconciliation</span><span class="tag">Automation</span></div>
+    </article>
+    <article class="entry">
+      <div class="entry-head"><h3>Relationship Manager, Customer Services</h3><span class="meta">Apr 2022 – Jul 2022</span></div>
+      <div><span class="org">Federal Bank</span> · Visakhapatnam, India</div>
+      <ul>
+        <li>Managed digital account onboarding for high-net-worth clients, improving client retention by 20%.</li>
+        <li>Handled KYC processes and advised retail and institutional clients on banking products, building long-term relationships through tailored solutions.</li>
+      </ul>
+    </article>
+    <article class="entry">
+      <div class="entry-head"><h3>Co-Founder</h3><span class="meta">May 2019 – Jun 2021</span></div>
+      <div><span class="org">Pinsmart Infratech Solutions</span> · Visakhapatnam, India</div>
+      <ul>
+        <li>Co-founded a home-automation company; led financial oversight and pitched to high-net-worth investors, growing both B2B and B2C business.</li>
+        <li>Developed home-automation products on Z-Wave and Zigbee, generating USD 7K–10K in revenue.</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="body">
+    <article class="entry">
+      <div class="entry-head"><h3>Capstone: Client Insight Programme for Strategic Relationship Mapping</h3><span class="meta">Sep 2026 – present</span></div>
+      <div><span class="org">Elderlake Partners</span> (formerly Lumen Risk Advisory) · Fordham Gabelli capstone <span class="badge">In progress</span></div>
+      <ul>
+        <li>Building a client-insight programme and risk dashboard that maps the firm's most important existing and potential relationships, their preferences and motivations, and how each supports the firm's strategic goals.</li>
+        <li>Turning the business context into a structured problem, measurable assumptions and practical recommendations on which clients and partners are the strongest strategic fit.</li>
+        <li>Deliverables: a working prototype, technical documentation, validation results and a live demonstration for a professional audience.</li>
+      </ul>
+    </article>
+    <article class="entry">
+      <div class="entry-head"><h3>Return-Constrained Equal Risk Contribution Portfolio</h3><span class="meta">Jan 2026 – May 2026</span></div>
+      <div><span class="org">Quantitative Methods for Portfolio Management</span> · Fordham Gabelli team project</div>
+      <ul>
+        <li>Constructed an Equal Risk Contribution (ERC) portfolio that balances each asset's contribution to total risk while meeting a target return constraint.</li>
+        <li>Graded A. The judging panel picked our presentation as the best (two of three judges), citing the return-constrained ERC approach, clear and well-supported reasoning at each construction step, and strong Q&amp;A.</li>
+      </ul>
+      <div class="tags"><span class="tag">Risk parity</span><span class="tag">Optimization</span><span class="tag">Portfolio construction</span></div>
+    </article>
+    <article class="entry">
+      <div class="entry-head"><h3>Algorithmic Trading: Post-Trade and Pre-Trade Analysis</h3><span class="meta">Fordham Gabelli</span></div>
+      <div><span class="org">Algorithmic Trading coursework</span> · Robert Kissell's framework, in Python</div>
+      <ul>
+        <li>Post-trade: built a broker report card by decomposing implementation shortfall into its cost components and aggregating performance with Z-scores.</li>
+        <li>Pre-trade: calculated optimal participation (POV) rates by minimizing expected trading cost with market-impact models, using SciPy optimization.</li>
+      </ul>
+      <div class="tags"><span class="tag">Transaction cost analysis</span><span class="tag">Market impact</span><span class="tag">Python · SciPy</span></div>
+    </article>
+    <div class="grid2">
+      <article class="card">
+        <h3>Capital Budgeting at Hindustan Petroleum (HPCL)</h3>
+        <p>Evaluated HPCL's investment decisions, including new machinery and capital investments, with capital budgeting techniques to assess profitability and risk. Built 20+ Excel modules for control and substantive testing to catch potential misstatements.</p>
+      </article>
+      <article class="card">
+        <h3>Research paper <span class="badge">In preparation</span></h3>
+        <p>Leveraging blockchain technology to digitize economies and mitigate online fraud. Manuscript in preparation (2026).</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="ai">
+  <h2>AI &amp; automation</h2>
+  <div class="body">
+    <p style="color:var(--muted)">Work from Fordham's Generative AI course (Fall 2026): using large language models and automation for financial research, forecasting and workflows.</p>
+    <article class="entry">
+      <div class="entry-head"><h3>Financial Eureka: an agentic equity-research pipeline</h3><span class="meta">Oct – Nov 2026</span></div>
+      <div><span class="org">Prompt design and LLM evaluation</span> · I wrote the comparative review and the corrected V5</div>
+      <ul>
+        <li>A seven-station prompt workflow (stock picker, data scout, catalyst prioritizer, analyst, writer, editor, report) that turns one US stock-market mover into a one-page research brief, with every number tied to a numbered, sourced fact.</li>
+        <li>Benchmarked a Claude brief (Bloom Energy) against a ChatGPT brief (SLB) on a weighted scorecard (7.1 vs 6.4 out of 10) and checked key figures against each company's Q3 2026 SEC 8-K filing.</li>
+        <li>Traced 17 failures back to the prompt rules that caused them and wrote V5: source tiers for financial figures, conditional calls with a metric, threshold and date, a free-cash-flow gap closed by calculation, and an editor that can actually report a failure.</li>
+        <li>Ran the same review on a news-explainer prompt (NEWSROOM, V2 to V3): claim-to-source mapping, a time anchor and fixed failure formats.</li>
+      </ul>
+      <div class="tags"><span class="tag">Prompt engineering</span><span class="tag">Claude</span><span class="tag">ChatGPT</span><span class="tag">SEC filings</span><span class="tag">Equity research</span></div>
+    </article>
+    <article class="entry">
+      <div class="entry-head"><h3>Kronos: AI forecasting bot for ETFs</h3><span class="meta">Oct 2026 · team</span></div>
+      <div><span class="org">Python research prototype</span> · Interactive Brokers TWS API, Hugging Face</div>
+      <ul>
+        <li>Pulls three years of daily price and volume data from Interactive Brokers (paper account, read-only), keeps the latest 400 completed NYSE sessions and validates every candle before forecasting.</li>
+        <li>Forecasts the next five trading sessions with Kronos-small, a pre-trained candlestick model (20 sampled paths, fixed seed), and turns each forecast into an experimental LONG or CASH signal, logged to CSV.</li>
+        <li>Extended the universe from 5 to 30 ETFs across US equity, all 11 sectors, fixed income, commodities, international and crypto. Research only: no orders are placed.</li>
+      </ul>
+      <div class="tags"><span class="tag">Python</span><span class="tag">pandas</span><span class="tag">PyTorch</span><span class="tag">IBKR API</span><span class="tag">Time-series forecasting</span></div>
+    </article>
+    <article class="entry">
+      <div class="entry-head"><h3>Finance job search automation</h3><span class="meta">Sep 2026 · team</span></div>
+      <div><span class="org">n8n workflow</span> · Apify, OpenAI</div>
+      <ul>
+        <li>A scheduled workflow that scrapes finance job listings with Apify, normalizes the fields, scores each role against a candidate profile with OpenAI using a strict JSON schema (score, decision, matching evidence, gaps), then shortlists strong fits for an application tracker.</li>
+        <li>The scoring prompt forbids inventing experience, licenses, salary or sponsorship, so every match is backed by evidence from the profile.</li>
+      </ul>
+      <div class="tags"><span class="tag">n8n</span><span class="tag">Apify</span><span class="tag">OpenAI API</span><span class="tag">JavaScript</span></div>
+    </article>
+    <div class="grid2">
+      <article class="card">
+        <h3>AI infrastructure investment thesis</h3>
+        <p>Team study showing how refined questions improve AI-assisted macro research: AI capex and US growth, grid capacity (data centers used about 4.4% of US electricity in 2023, possibly 6.7–12% by 2028), inflation and rates, and which parts of the AI value chain offer the strongest opportunities.</p>
+      </article>
+      <article class="card">
+        <h3>2026 materials sector outlook</h3>
+        <p>Team research on the copper supply gap from electrification (a projected 25% shortfall by 2035, per the IEA), refining concentration and macro risks, with a three-tier ETF ladder: XLB as core, PICK as tactical and COPX as thematic.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="writing">
+  <h2>Writing &amp; content</h2>
+  <div class="body">
+    <div class="grid2">
+      <article class="card">
+        <h3>Baby Steps in Investing: three questions before buying any stock</h3>
+        <p>A short video and slide deck for beginners, worked through on Costco: how it makes money (51% of operating income comes from membership fees, with a 92.3% renewal rate), whether it is financially healthy, and whether the price is reasonable (about 50x earnings vs. a 10-year average near 40x).</p>
+      </article>
+      <article class="card">
+        <h3>Beyond language: human capabilities in the GenAI era</h3>
+        <p>Executive summary and presentation arguing that when AI makes analysis cheap, the edge moves to problem formulation, judgment, ethics and the conviction to act, illustrated with three levels of prompts for valuing a SaaS company.</p>
+      </article>
+      <article class="card">
+        <h3>Coin Quest: The Broke Hero</h3>
+        <p>Team project: an interactive comic flipbook that teaches saving, spending and investing through a story, built for financial literacy.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <h2>Education</h2>
+  <div class="body">
+    <article class="entry">
+      <div class="entry-head"><h3>Fordham University, Gabelli School of Business</h3><span class="meta">Aug 2025 – Dec 2026</span></div>
+      <div>MS Finance, FinTech &amp; Quant concentration · New York, NY</div>
+      <ul>
+        <li>Dean's List · GMAT Focus 735/805</li>
+        <li>Coursework and projects: quantitative portfolio management, algorithmic trading and transaction cost analysis, financial modeling in Python.</li>
+        <li>IBPEVC Club (Investment Banking, Private Equity and Venture Capital): member and event volunteer.</li>
+      </ul>
+    </article>
+    <article class="entry">
+      <div class="entry-head"><h3>Andhra University</h3><span class="meta">2015 – 2019</span></div>
+      <div>B.Tech, Electronics and Communication Engineering · Visakhapatnam, India</div>
+      <ul>
+        <li>University cricket team captain · Prime Minister's Scholarship (2016)</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section id="certifications">
+  <h2>Certifications &amp; honors</h2>
+  <div class="body">
+    <ul class="list-plain">
+      <li><span>Financial Modeling &amp; Valuation Analyst (FMVA®)</span><span class="meta">Corporate Finance Institute</span></li>
+      <li><span>Commercial Banking &amp; Credit Analyst (CBCA®)</span><span class="meta">Corporate Finance Institute</span></li>
+      <li><span>Investment Banking Job Simulation, JPMorgan Chase &amp; Co.</span><span class="meta">Forage · Jun 2024</span></li>
+      <li><span>Microsoft Certified: Azure AI Fundamentals (AI-900)</span><span class="meta">Microsoft</span></li>
+      <li><span>FRM Part I</span><span class="meta">GARP · preparing</span></li>
+      <li><span>Shout Out Award for productivity and code design</span><span class="meta">Morningstar · 2023</span></li>
+      <li><span>Best Presentation, QMPM team project</span><span class="meta">Fordham Gabelli · 2026</span></li>
+      <li><span>Prime Minister's Scholarship</span><span class="meta">Government of India · 2016</span></li>
+    </ul>
+    <p style="font-size:15px;color:var(--muted)">In the JPMorgan simulation, I identified an M&amp;A target against strategic and financial criteria, built a dynamic DCF that accounted for competing bids and supply-chain disruption, and wrote a two-page client report on the company and the auction process.</p>
+  </div>
+</section>
+
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="body skills">
+    <div><h3>Finance</h3><div class="tags"><span class="tag">Financial modeling</span><span class="tag">DCF valuation</span><span class="tag">Financial statement analysis</span><span class="tag">Credit analysis</span><span class="tag">Equity research</span><span class="tag">Due diligence</span><span class="tag">M&amp;A analysis</span></div></div>
+    <div><h3>Portfolio &amp; risk</h3><div class="tags"><span class="tag">Portfolio construction</span><span class="tag">Risk parity / ERC</span><span class="tag">Risk analysis</span><span class="tag">Transaction cost analysis</span><span class="tag">Quantitative finance</span></div></div>
+    <div><h3>Data &amp; programming</h3><div class="tags"><span class="tag">Python (pandas, SciPy, BeautifulSoup, win32com)</span><span class="tag">SQL</span><span class="tag">Excel (pivot tables, lookups)</span><span class="tag">Web scraping</span></div></div>
+    <div><h3>Tools &amp; platforms</h3><div class="tags"><span class="tag">Power BI</span><span class="tag">Tableau</span><span class="tag">PitchBook</span><span class="tag">Bloomberg Terminal</span><span class="tag">Interactive Brokers API</span></div></div>
+    <div><h3>AI &amp; automation</h3><div class="tags"><span class="tag">Prompt engineering</span><span class="tag">LLM evaluation (Claude, ChatGPT)</span><span class="tag">n8n</span><span class="tag">Apify</span><span class="tag">Hugging Face</span><span class="tag">Microsoft Azure AI</span></div></div>
+    <div><h3>Languages</h3><div class="tags"><span class="tag">English (professional)</span><span class="tag">Hindi (fluent)</span><span class="tag">Telugu (native)</span></div></div>
+  </div>
+</section>
+
+<section id="leadership">
+  <h2>Leadership</h2>
+  <div class="body">
+    <div class="grid2">
+      <article class="card"><h3>International Fleet Review</h3><p>People Coordinator in Visakhapatnam, coordinating logistics and communication with five foreign naval contingents.</p></article>
+      <article class="card"><h3>University cricket captain</h3><p>Captained the Andhra University cricket team. Also plays chess, badminton and swims, and enjoys trekking.</p></article>
+      <article class="card"><h3>Community volunteering</h3><p>Organized food distribution in Visakhapatnam to reach as many people in need as possible.</p></article>
+      <article class="card"><h3>International House New York</h3><p>Resident and active participant in I-House's community and events with finance and industry leaders.</p></article>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="wrap">Premchand Nagireddy · <a href="mailto:pn34@fordham.edu">pn34@fordham.edu</a> · <a href="https://www.linkedin.com/in/premchandnagireddy">LinkedIn</a></footer>
+
+</body>
+</html>
